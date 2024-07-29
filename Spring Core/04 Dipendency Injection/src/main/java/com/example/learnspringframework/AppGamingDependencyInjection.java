@@ -11,11 +11,22 @@ import java.util.Arrays;
 @Component
 class YourBusinessClass {
 
-    @Autowired // Dependency Injection - Field Injection(Default)
     DependencyInjection01 dependencyInjection01;
 
-    @Autowired // Dependency Injection - Field Injection(Default)
     DependencyInjection02 dependencyInjection02;
+
+    @Autowired
+    public void setDependencyInjection01(DependencyInjection01 dependencyInjection01) {
+        System.out.println("Setter Injection - 01");
+        this.dependencyInjection01 = dependencyInjection01;
+    }
+
+    @Autowired
+    public void setDependencyInjection02(DependencyInjection02 dependencyInjection02) {
+        System.out.println("Setter Injection - 02");
+        this.dependencyInjection02 = dependencyInjection02;
+    }
+
 
     public String toString() {
         return "Using " + dependencyInjection01 + " and " + dependencyInjection02;
