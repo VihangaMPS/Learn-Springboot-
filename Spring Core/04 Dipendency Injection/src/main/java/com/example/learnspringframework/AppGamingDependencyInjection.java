@@ -16,14 +16,9 @@ class YourBusinessClass {
     DependencyInjection02 dependencyInjection02;
 
     @Autowired
-    public void setDependencyInjection01(DependencyInjection01 dependencyInjection01) {
-        System.out.println("Setter Injection - 01");
+    public YourBusinessClass(DependencyInjection01 dependencyInjection01, DependencyInjection02 dependencyInjection02) {
+        System.out.println("Constructor Injection - YourBusinessClass");
         this.dependencyInjection01 = dependencyInjection01;
-    }
-
-    @Autowired
-    public void setDependencyInjection02(DependencyInjection02 dependencyInjection02) {
-        System.out.println("Setter Injection - 02");
         this.dependencyInjection02 = dependencyInjection02;
     }
 
