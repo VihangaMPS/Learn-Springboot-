@@ -1,27 +1,21 @@
 package com.example.learnspringframework;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-class ClassA {
+class NormalClass {
 
 }
 
 @Component
-class ClassB {
-    private ClassA classA;
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+class PrototypeClass {
 
-    public ClassB(ClassA classA) {
-        System.out.println("Some Initialization Logic");
-        this.classA = classA;
-    }
-
-    public void doSomething() {
-        System.out.println("doSomething ...");
-    }
 }
 
 
@@ -34,6 +28,11 @@ public class LazyInitializationLauncher {
 
         System.out.println("Lazy Initialization of Context is created ");
 
-        context.getBean(ClassB.class).doSomething();
+        System.out.println(context.getBean(NormalClass.class));
+        System.out.println(context.getBean(NormalClass.class));
+
+        System.out.println(context.getBean(PrototypeClass.class));
+        System.out.println(context.getBean(PrototypeClass.class));
+        System.out.println(context.getBean(PrototypeClass.class));
     }
 }
