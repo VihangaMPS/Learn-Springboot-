@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 public class CourseCommandLineRunner implements CommandLineRunner {
 
     @Autowired
-    private CourseJDBCRepository courseJDBCRepository;
+    private  CourseSpringDataJPARepository repository;
 
     @Override
     public void run(String... args) throws Exception {
-        courseJDBCRepository.insert(new Course(1, "Learn Spring Boot", "Spring Boot"));
-        courseJDBCRepository.insert(new Course(2, "Learn AWS", "AWS"));
-        courseJDBCRepository.insert(new Course(3, "Learn React", "React"));
+        repository.save(new Course(1, "Learn Spring Boot", "Spring Boot"));
+        repository.save(new Course(2, "Learn AWS", "AWS"));
+        repository.save(new Course(3, "Learn React", "React"));
 
-        courseJDBCRepository.deleteById(2);
+        repository.deleteById(2l);
     }
 }
